@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jobbox — работа в Корее</title>
+<meta name="description" content="Вакансии в Корее в одной ленте, смены и зарплата в вонах. Android и iPhone.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jobbox — работа в Корее">
+<meta property="og:description" content="Вакансии в Корее в одной ленте, смены и зарплата в вонах. Android и iPhone.">
+<meta property="og:url" content="https://anatret.github.io/jobbox-legal/s/">
+<meta property="og:image" content="https://anatret.github.io/jobbox-legal/app/icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="../app/icon.png">
+<link rel="apple-touch-icon" href="../app/icon.png">
+<script>
+  // Одна ссылка на оба магазина: телефон сразу уходит в свой магазин,
+  // на компьютере остаётся страница с двумя кнопками.
+  (function () {
+    var play = 'https://play.google.com/store/apps/details?id=com.anatret.jobboxv3&listing=channel';
+    var apple = 'https://apps.apple.com/app/id6826568517?ppid=9a01fd6f-40e6-4316-93e4-9e54e2874af5';
+    var ua = navigator.userAgent || '';
+    // iPadOS представляется Mac'ом — отличаем по сенсорному экрану.
+    var ios = /iPhone|iPad|iPod/i.test(ua) ||
+      (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
+    var android = /Android/i.test(ua);
+    if (ios) location.replace(apple);
+    else if (android) location.replace(play);
+  })();
+</script>
+<style>
+  body { font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+         max-width: 420px; margin: 0 auto; padding: 48px 20px;
+         text-align: center; line-height: 1.5; color: #1c1b22; background: #fff; }
+  img { width: 96px; height: 96px; border-radius: 22px; }
+  h1 { color: #1A007E; font-size: 1.6em; margin: 16px 0 4px; }
+  p { margin: 0 0 28px; color: #55536a; }
+  a.btn { display: block; padding: 14px; margin: 0 0 12px; border-radius: 12px;
+          background: #1A007E; color: #fff; text-decoration: none; font-weight: 600; }
+</style>
+</head>
+<body>
+<img src="../app/icon.png" alt="">
+<h1>Jobbox</h1>
+<p>Свежие вакансии в Корее и учёт смен и зарплаты</p>
+<a class="btn" href="https://play.google.com/store/apps/details?id=com.anatret.jobboxv3&amp;listing=channel">Google Play — Android</a>
+<a class="btn" href="https://apps.apple.com/app/id6826568517?ppid=9a01fd6f-40e6-4316-93e4-9e54e2874af5">App Store — iPhone</a>
+</body>
+</html>

@@ -21,6 +21,25 @@
   (function () {
     var play = 'https://play.google.com/store/apps/details?id=com.anatret.jobboxv3&listing=channel';
     var apple = 'https://apps.apple.com/app/id6826568517?ppid=9a01fd6f-40e6-4316-93e4-9e54e2874af5';
+    // Метки рекламы: /s/?utm_source=meta&utm_campaign=dec26&utm_content=calc
+    // Google Play получает их в referrer (отчёт «Привлечение пользователей»),
+    // App Store — кампанию в ct (с токеном провайдера pt — отчёт «Кампании»).
+    var PT = '';
+    var q = new URLSearchParams(location.search), utm = [];
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(function (k) {
+      var v = (q.get(k) || '').replace(/[^\w.-]/g, '').slice(0, 40);
+      if (v) utm.push(k + '=' + v);
+    });
+    if (utm.length) {
+      play += '&referrer=' + encodeURIComponent(utm.join('&'));
+      var ct = [q.get('utm_source'), q.get('utm_campaign'), q.get('utm_content')]
+        .filter(Boolean).join('_').replace(/[^\w.-]/g, '').slice(0, 40);
+      apple += (PT ? '&pt=' + PT : '') + '&ct=' + ct + '&mt=8';
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var a = document.querySelectorAll('a.btn');
+      if (a.length === 2) { a[0].href = play; a[1].href = apple; }
+    });
     var ua = navigator.userAgent || '';
     // iPadOS представляется Mac'ом — отличаем по сенсорному экрану.
     var ios = /iPhone|iPad|iPod/i.test(ua) ||
